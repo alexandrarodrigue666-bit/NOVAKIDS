@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma de recursos académicos para preescolar - Portal educativo para profesores, padres y comunidad">
+    <meta name="keywords" content="preescolar, jardín infantil, educación inicial, recursos educativos, padres, profesores">
+    <meta name="author" content="Moreno Joshua, Rodríguez Alexandra">
+    <title>NOVA - Recursos Académicos para Preescolar</title>
+    <link rel="stylesheet" href="estilocss/inicio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+     
+</head>
+
+<body>
+
+    <!-- Botón flotante de accesibilidad -->
+    <button id="accessibilityBtn" class="accessibility-float-btn">♿</button>
+
+     <!-- Panel de accesibilidad que se despliega -->
+    <div id="accessibilityPanel" class="accessibility-panel-wrapper">
+        <div class="accessibility-menu-content">
+
+              <!-- Sección de modos de accesibilidad -->
+            <div class="section-title">Modos de accesibilidad</div>
+            <div class="options-list">
+
+                 <!-- Opción: Modo seguro de epilepsia -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Modo seguro de epilepsia</div>
+                        <div class="toggle-switch" id="epilepsyToggle" onclick="toggleOption('epilepsy')"> <!-- Interruptor que activa/desactiva el modo -->
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                    <div class="option-description">Humedece el color y elimina los parpadeos.</div>
+                </div>
+
+                 <!-- Opción: Modo para discapacidad visual -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Modo para personas con discapacidad visual</div>
+                        <div class="toggle-switch" id="visualToggle" onclick="toggleOption('visual')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                    <div class="option-description">Mejora las imágenes del sitio web.</div>
+                </div>
+
+                 <!-- Opción: Modo cognitivo -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Modo de discapacidad cognitiva</div>
+                        <div class="toggle-switch" id="cognitiveToggle" onclick="toggleOption('cognitive')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                    <div class="option-description">Ayuda a concentrarse en contenido específico.</div>
+                </div>
+                    <!-- Opción: Modo compatible con TDAH -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Modo compatible con TDAH</div>
+                        <div class="toggle-switch" id="adhdToggle" onclick="toggleOption('adhd')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                    <div class="option-description">Reduce las distracciones y mejora el enfoque.</div>
+                </div>
+            </div>
+
+            <!-- Sección de ajustes visuales -->
+            <div class="section-title">Ajustes Visuales</div>
+            <div class="options-list">
+                <div class="option-item">
+                    <div class="option-title">Tamaño de texto</div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="adjustTextSize(-10)">A-</button>
+                        <input type="range" id="textSizeSlider" min="100" max="200" value="100" step="10" oninput="setTextSize(this.value)">
+                        <button class="slider-btn" onclick="adjustTextSize(10)">A+</button>
+                    </div>
+                </div>
+                   <!-- Control de tamaño de texto -->
+                <div class="option-item">
+                    <div class="option-title">Espaciado de texto</div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="adjustLineHeight(-0.2)">-</button>
+                        <input type="range" id="lineHeightSlider" min="1" max="2.5" value="1.5" step="0.1" oninput="setLineHeight(this.value)">
+                        <button class="slider-btn" onclick="adjustLineHeight(0.2)">+</button>
+                    </div>
+                </div>
+                  <!-- Opción: Alto contraste -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Alto contraste</div>
+                        <div class="toggle-switch" id="contrastToggle" onclick="toggleVisualOption('contrast')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+                  <!-- Opción: Saturación de color -->
+                <div class="option-item">
+                    <div class="option-title">Saturación de color</div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="adjustSaturation(-20)">-</button>
+                        <input type="range" id="saturationSlider" min="0" max="200" value="100" step="10" oninput="setSaturation(this.value)">
+                        <button class="slider-btn" onclick="adjustSaturation(20)">+</button>
+                    </div>
+                </div>
+                 <!-- Opción: Escala de grises -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Escala de grises</div>
+                        <div class="toggle-switch" id="grayscaleToggle" onclick="toggleVisualOption('grayscale')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+
+                       <!-- Opción: Invertir colores -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Invertir colores</div>
+                        <div class="toggle-switch" id="invertToggle" onclick="toggleVisualOption('invert')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- Opción: Resaltar enlaces -->
+                <div class="option-item">
+                    <div class="option-header">
+                        <div class="option-title">Resaltar enlaces</div>
+                        <div class="toggle-switch" id="linksToggle" onclick="toggleVisualOption('links')">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                     <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="resetSettings()">Reiniciar ajustes</button>
+                <button class="btn btn-secondary" onclick="hideForever()">Ocultar para siempre</button>
+            </div>
+        </div>
+    </div>
+
+   
+    <header>
+    <!-- Video de fondo en el encabezado -->
+    <video autoplay muted loop>
+        <source src="imagenes/space.mp4" type="video/mp4">
+    </video>
+
+    <!-- Título principal del sitio -->
+    <h1>NOVA</h1>
+
+    <!-- Subtítulo o lema -->
+    <p>Educación inicial de calidad para todos</p>
+</header>
+
+<!-- Barra de navegación principal -->
+<nav>
+    <!-- Enlace activo a la página de inicio -->
+    <a href="#" class="active">Inicio</a>
+
+    <!-- Sección del menú: Profesores -->
+    <div class="menu-item">
+        <a href="profesores.html">Profesores</a>
+       
+    </div>
+
+    <!-- Sección del menú: Padres de Familia -->
+    <div class="menu-item">
+        <a href="padres.html">Padres de Familia</a>
+      
+    </div>
+
+    <!-- Sección del menú: Comunidad -->
+    <div class="menu-item">
+        <a href="comunidad.html">Comunidad</a>
+       
+    </div>
+
+    <!-- Sección del menú: Actividades y Juegos -->
+    <div class="menu-item">
+        <a href="#actividades">Juegos y actividades </a>
+      
+    </div>
+
+    <!-- Sección del menú: Noticias y Eventos -->
+    <div class="menu-item">
+        <a href="noticias.html">Noticias y Eventos</a>
+      
+    </div>
+
+    <!-- Enlace directo a la sección de contacto -->
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<main>
+    <!-- Sección de bienvenida -->
+    <section class="seccion-bienvenida">
+        <div class="contenedor-bienvenida">
+            <!-- Título de bienvenida -->
+            <h2>Bienvenidos a Nuestra Comunidad Educativa</h2>
+
+            <!-- Texto introductorio explicando la misión del portal -->
+           <p class="texto-justificado">
+    En NOVA creemos que la educación inicial es la base fundamental para el desarrollo integral de nuestros niños. 
+    Este portal ha sido diseñado como un espacio de encuentro y colaboración donde profesores, padres de familia y 
+    toda la comunidad educativa pueden acceder a recursos de calidad, compartir experiencias y fortalecer el proceso 
+    de aprendizaje de los más pequeños. Aquí encontrarás herramientas pedagógicas innovadoras, guías prácticas para 
+    el hogar, actividades interactivas y todo el apoyo necesario para que cada niño desarrolle su máximo potencial 
+    en un ambiente de amor, respeto y creatividad.
+</p>
+
+            <!-- Texto destacado en negrita -->
+            <p><strong>Diseñado para profesores, padres de familia y toda la comunidad.</strong></p>
+
+            
+        </div>
+    </section>
+
+    <!-- Sección de carrusel de noticias -->
+    <section class="seccion-carrusel">
+        <h2>Noticias destacadas</h2>
+
+        <!-- Contenedor del carrusel -->
+        <div class="carrusel-contenedor">
+            <!-- Botón para retroceder en el carrusel -->
+            <button class="carrusel-btn" onclick="cambiarSlide('noticias', -1)">‹</button>
+
+            <!-- Área que contiene las diapositivas -->
+            <div class="carrusel-wrapper">
+                <div class="carrusel-slides" id="carrusel-noticias">
+
+                    <!-- Primera noticia -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/numeros.jpeg" alt="Actividades Interactivas">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Inauguración de Sección de Actividades Interactivas</h3>
+                            <p>Nos complace anunciar el lanzamiento de nuestra nueva sección de actividades interactivas en línea para niños, que incluye rompecabezas, juegos educativos sencillos y recursos multimedia.</p>
+                            <p><em>Fecha: 15 de marzo, 2025</em></p>
+                        </div>
+                    </div>
+
+                    <!-- Segunda noticia -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/educaencasa.jpg" alt="educación en casa">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Taller para Padres: "Apoyo Educativo en Casa"</h3>
+                            <p>Inscríbete en nuestro próximo taller diseñado para ayudar a los padres a crear ambientes de aprendizaje efectivos en el hogar.</p>
+                            <p><em>Fecha: 22 de marzo, 2025</em></p>
+                        </div>
+                    </div>
+
+                    <!-- Tercera noticia -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/caalendario.jpg" alt="calendario">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Calendario Escolar 2025 Actualizado</h3>
+                            <p>Consulta las fechas importantes, eventos especiales y días festivos del año lectivo actual. Mantente informado sobre todas las actividades programadas.</p>
+                            <p><em>Fecha: 1 de marzo, 2025</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón para avanzar en el carrusel -->
+            <button class="carrusel-btn" onclick="cambiarSlide('noticias', 1)">›</button>
+        </div>
+    </section>
+</main>
+
+<section class="seccion-recursos" id="profesores">
+    <!-- Contenedor principal de recursos para profesores -->
+    <div class="recursos-principales">
+        <h2>Profesores</h2>
+
+        <!-- Carrusel de recursos principales -->
+        <div class="carrusel-contenedor">
+            <!-- Botón para retroceder en el carrusel -->
+            <button class="carrusel-btn" onclick="cambiarSlide('profesores', -1)">‹</button>
+
+            <!-- Área que contiene las diapositivas -->
+            <div class="carrusel-wrapper">
+                <div class="carrusel-slides" id="carrusel-profesores">
+
+                    <!-- Primera diapositiva: Recursos Pedagógicos -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/teacher.jpg" alt="profesores">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Recursos Pedagógicos</h3>
+                            <p>Accede a recursos pedagógicos, planes de clase y guías educativas actualizadas para enriquecer tu enseñanza.</p>
+                            <p>• Materiales didácticos listos para usar</p>
+                            <p>• Capacitaciones y formación continua</p>
+                            <p>• Planes de clase descargables</p>
+                        </div>
+                    </div>
+
+                    <!-- Segunda diapositiva: Guía de Desarrollo Infantil -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/material.jpg" alt="guiainfantil">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Guía de Desarrollo Infantil</h3>
+                            <p>Material actualizado sobre etapas de desarrollo en niños de 3 a 6 años.</p>
+                            <p>Incluye estrategias prácticas, actividades recomendadas y técnicas de evaluación para el aula preescolar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón para avanzar en el carrusel -->
+            <button class="carrusel-btn" onclick="cambiarSlide('profesores', 1)">›</button>
+        </div>
+    </div>
+
+    <!-- Barra lateral con enlaces a recursos externos -->
+    <aside class="recursos-sidebar">
+        <h3>Recursos</h3>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/cuadernillo-de-preescolar/">Material 1</a></div>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/cuadernillo-matematico-para-preescolar/">Material 2</a></div>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/cuadernillo-me-preparo-para-leer/">Material 3</a></div>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/cuadernillo-del-abecedario/">Material 4</a></div>
+    </aside>
+</section>
+
+<section class="seccion-recursos" id="padres">
+    <!-- Contenedor principal de recursos para padres -->
+    <div class="recursos-principales">
+        <h2>Padres</h2>
+
+        <!-- Carrusel de recursos principales -->
+        <div class="carrusel-contenedor">
+            <!-- Botón para retroceder en el carrusel -->
+            <button class="carrusel-btn" onclick="cambiarSlide('padres', -1)">‹</button>
+
+            <!-- Área que contiene las diapositivas -->
+            <div class="carrusel-wrapper">
+                <div class="carrusel-slides" id="carrusel-padres">
+
+                    <!-- Primera diapositiva: Guías para Padres -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/homeclass.jpg" alt="hogar">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Guías para Padres</h3>
+                            <p>Encuentra orientación, calendarios de actividades y guías para apoyar el aprendizaje desde casa.</p>
+                            <p>• Calendario de eventos escolares</p>
+                            <p>• Guías de apoyo educativo en casa</p>
+                            <p>• Sistema de notificaciones</p>
+                        </div>
+                    </div>
+
+                    <!-- Segunda diapositiva: Actividades para el Hogar -->
+                    <div class="slide-content">
+                        <div class="slide-imagen">
+                            <img src="imagenes/union.jpg" alt="familia">
+                        </div>
+                        <div class="slide-descripcion">
+                            <h3>Actividades para el Hogar</h3>
+                            <p>Descubre actividades divertidas y educativas que puedes realizar con tus hijos en casa.</p>
+                            <p>Fortalece el vínculo familiar mientras apoyas su desarrollo cognitivo y emocional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón para avanzar en el carrusel -->
+            <button class="carrusel-btn" onclick="cambiarSlide('padres', 1)">›</button>
+        </div>
+    </div>
+
+    <!-- Barra lateral con recursos adicionales -->
+    <aside class="recursos-sidebar">
+        <h3>Recursos</h3>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/aprendiendo-a-leer-01/">Guía 1</a></div>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/aprendiendo-a-leer-02/">Guía 2</a></div>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/aprendiendo-a-leer-03/">Guía 3</a></div>
+        <div class="recurso-item"><a href="https://materialparamaestros.com/aprendiendo-a-leer-04/">Guía 4</a></div>
+    </aside>
+</section>
+
+        
+        <section class="seccion-carrusel" id="comunidad">
+    <!-- Título de la sección -->
+    <h2>Comunidad</h2>
+
+    <!-- Contenedor principal del carrusel -->
+    <div class="carrusel-contenedor">
+        <!-- Botón para retroceder en el carrusel -->
+        <button class="carrusel-btn" onclick="cambiarSlide('comunidad', -1)">‹</button>
+
+        <!-- Área que contiene las diapositivas -->
+        <div class="carrusel-wrapper">
+            <div class="carrusel-slides" id="carrusel-comunidad">
+
+                <!-- Primera diapositiva: Información para la comunidad -->
+                <div class="slide-content">
+                    <div class="slide-imagen">
+                        <img src="imagenes/comunidad.jpg" alt="comunidad">
+                    </div>
+                    <div class="slide-descripcion">
+                        <h3>Para la Comunidad</h3>
+                        <p>Conoce la importancia de la educación inicial y participa en nuestros programas comunitarios.</p>
+                        <p>• Información sobre educación preescolar</p>
+                        <p>• Noticias y eventos comunitarios</p>
+                        <p>• Foros de intercambio de experiencias</p>
+                    </div>
+                </div>
+
+                <!-- Segunda diapositiva: Eventos comunitarios -->
+                <div class="slide-content">
+                    <div class="slide-imagen">
+                        <img src="imagenes/actividades.jpg" alt="actividades">
+                    </div>
+                    <div class="slide-descripcion">
+                        <h3>Eventos Comunitarios</h3>
+                        <p>Participa en nuestros eventos, talleres y actividades diseñadas para toda la comunidad educativa.</p>
+                        <p>Un espacio de encuentro, aprendizaje y colaboración entre familias, educadores y miembros de la comunidad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón para avanzar en el carrusel -->
+        <button class="carrusel-btn" onclick="cambiarSlide('comunidad', 1)">›</button>
+    </div>
+</section>
+
+        <section>
+    <!-- Sección de juegos y actividades -->
+    <div id="actividades" class="seccion-actividades-juegos">
+        <h2>Juegos y Actividades</h2>
+
+        <!-- Contenedor del video de presentación -->
+        <div class="contenedor-video-actividades">
+            <video autoplay muted loop controls class="video-centrado">
+                <!-- Fuente principal del video -->
+                <source src="imagenes/astroutaa.mp4" type="video/mp4">
+                <!-- Fuente alternativa en formato webm -->
+                <source src="ruta/a/tu/video-actividades.webm" type="video/webm">
+                <!-- Mensaje de fallback si el navegador no soporta video -->
+                Tu navegador no soporta el tag de video.
+            </video>
+        </div>
+
+        <!-- Contenedor de botones de navegación -->
+        <div class="contenedor-botones-actividades">
+            <!-- Botón que lleva a la página de actividades -->
+            <a href="actividades.html" class="btn-actividad">
+                Actividades
+            </a>
+
+            <!-- Botón que lleva a la página de juegos -->
+            <a href="juegos.html" class="btn-juego">
+                Juegos
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="informacion-horarios">
+    <!-- Título de la sección -->
+    <h2>Horarios de Atención</h2>
+
+    <!-- Tabla que organiza los horarios de distintos servicios -->
+    <table class="tabla-horarios">
+        <thead>
+            <!-- Encabezado de la tabla -->
+            <tr>
+                <th>Servicio</th>
+                <th>Días</th>
+                <th>Horario</th>
+                <th>Modalidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Fila: Portal Web -->
+            <tr>
+                <td>Portal Web</td>
+                <td>Lunes a Domingo</td>
+                <td>24/7</td>
+                <td>En línea</td>
+            </tr>
+
+            <!-- Fila: Atención a Padres -->
+            <tr>
+                <td>Atención a Padres</td>
+                <td>Lunes a Viernes</td>
+                <td>7:00 AM - 4:00 PM</td>
+                <td>Presencial / Teléfono</td>
+            </tr>
+
+            <!-- Fila: Soporte Técnico -->
+            <tr>
+                <td>Soporte Técnico</td>
+                <td>Lunes a Viernes</td>
+                <td>8:00 AM - 5:00 PM</td>
+                <td>Correo / Chat</td>
+            </tr>
+
+            <!-- Fila: Biblioteca de Recursos -->
+            <tr>
+                <td>Biblioteca de Recursos</td>
+                <td>Lunes a Sábado</td>
+                <td>8:00 AM - 6:00 PM</td>
+                <td>En línea / Presencial</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+       <section class="formulario-contacto" id="contacto">
+    <!-- Título de la sección -->
+    <h2>Contáctanos</h2>
+
+    <!-- Texto introductorio -->
+    <p>¿Tienes preguntas o sugerencias? <strong>Envíanos un mensaje</strong> y te responderemos pronto.</p>
+
+    <!-- Formulario de contacto -->
+    <form class="form-contacto" onsubmit="return handleSubmit(event)">
+        
+        <!-- Campo: Nombre completo -->
+        <div class="campo-formulario">
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <!-- Campo: Correo electrónico -->
+        <div class="campo-formulario">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Campo: Tipo de usuario -->
+        <div class="campo-formulario">
+            <label for="tipo-usuario">Tipo de Usuario:</label>
+            <select id="tipo-usuario" name="tipo-usuario" required>
+                <option value="">Selecciona una opción</option>
+                <option value="profesor">Profesor</option>
+                <option value="padre">Padre de Familia</option>
+                <option value="comunidad">Miembro de la Comunidad</option>
+                <option value="administrador">Administrador Escolar</option>
+            </select>
+        </div>
+
+        <!-- Campo: Mensaje -->
+        <div class="campo-formulario">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+
+        <!-- Campo: Suscripción a boletines -->
+        <div class="campo-formulario">
+            <input type="checkbox" id="newsletter" name="newsletter">
+            <label for="newsletter">Deseo recibir boletines informativos</label>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="campo-formulario">
+            <button type="submit">Enviar Mensaje</button>
+            <button type="reset">Limpiar Formulario</button>
+        </div>
+    </form>
+</section> 
+    </main>
+
+   <footer id="pie-pagina">
+    <!-- Contenedor principal del footer -->
+    <div class="contenedor-footer">
+
+        <!-- Columna: Acerca de Nosotros -->
+        <div class="columna-footer">
+            <h4>Acerca de Nosotros</h4>
+            <p>Portal diseñado para centralizar recursos académicos y fortalecer la comunidad educativa preescolar.</p>
+        </div>
+        
+        <!-- Columna: Enlaces rápidos -->
+        <div class="columna-footer">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+                <li><a href="#profesores">Recursos para Profesores</a></li>
+                <li><a href="#padres">Guías para Padres</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+            </ul>
+        </div>
+        
+        <!-- Columna: Información de contacto -->
+        <div class="columna-footer">
+            <h4>Contacto</h4>
+            <p><strong>Email:</strong> NOVAKIDS14@gmail.com</p>
+            <p><strong>Teléfono:</strong> +507 6735-5691</p>
+            <p><strong>Dirección:</strong> Coclé, Panamá</p>
+        </div>
+        
+        <!-- Columna: Redes sociales -->
+        <div class="columna-footer">
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+                <li><a href="https://www.instagram.com/nova.kids14/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://www.twitter.com" target="_blank" rel="noopener">Twitter</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Sección de derechos de autor -->
+    <div class="copyright">
+        <p>&copy; 2025 NOVA - Universidad de Panamá, Centro Regional de Coclé</p>
+        <p>Desarrollado por: <strong>Moreno Joshua</strong> y <strong>Rodríguez Alexandra</strong></p>
+        <p><em>Licenciatura en Informática para la Gestión Educativa y Empresarial</em></p>
+    </div>
+    
+    <!-- Inclusión de archivo JavaScript -->
+    <script src="codigos de java/inicio.js"></script>
+</footer>
+
+</body>
+</html>

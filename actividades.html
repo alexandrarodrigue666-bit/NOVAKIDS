@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Aventura Espacial - Estudiantes</title>
+    <link rel="stylesheet" href="estilocss/actividades.css">
+   
+</head>
+<body>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Contenido Principal -->
+    <div class="main-content">
+        
+        <!-- Header con cohete -->
+        <div class="header">
+            <div class="rocket">🚀</div>
+            <h1 class="title">¡Mi Aventura Espacial!</h1>
+            <p class="subtitle">¿A dónde quieres viajar hoy?</p>
+            
+            <!-- Barra de progreso del estudiante -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-label">Mi Progreso</span>
+                    <span class="stars-count" id="starsCount">⭐ 45 estrellas</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar" id="progressBar" style="width: 65%;">
+                        <span class="progress-text" id="progressText">65%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Planetas/Actividades -->
+        <div class="planets-container">
+            
+            <!-- Planeta de Números -->
+            <div class="planet-card blue" onclick="openActivity('numeros')">
+                <div class="planet-content">
+                    <div class="planet-icon">🌍</div>
+                    <h2 class="planet-title">Planeta de Números</h2>
+                    <p class="planet-description">¡Aprende a contar con las estrellas!</p>
+                    <div class="planet-progress">
+                        <span class="progress-stars">⭐ 12/15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Galaxia de Palabras -->
+            <div class="planet-card purple" onclick="openActivity('palabras')">
+                <div class="planet-content">
+                    <div class="planet-icon">🪐</div>
+                    <h2 class="planet-title">Galaxia de Palabras</h2>
+                    <p class="planet-description">¡Descubre nuevas palabras espaciales!</p>
+                    <div class="planet-progress">
+                        <span class="progress-stars">⭐ 8/15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Luna de Objetos -->
+            <div class="planet-card pink" onclick="openActivity('objetos')">
+                <div class="planet-content">
+                    <div class="planet-icon">🌙</div>
+                    <h2 class="planet-title">Luna de Objetos</h2>
+                    <p class="planet-description">¡Identifica cosas del espacio!</p>
+                    <div class="planet-progress">
+                        <span class="progress-stars">⭐ 10/15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Estrella de Colores -->
+            <div class="planet-card yellow" onclick="openActivity('colores')">
+                <div class="planet-content">
+                    <div class="planet-icon">⭐</div>
+                    <h2 class="planet-title">Estrella de Colores</h2>
+                    <p class="planet-description">¡Aprende los colores del universo!</p>
+                    <div class="planet-progress">
+                        <span class="progress-stars">⭐ 15/15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cometa de Formas -->
+            <div class="planet-card green" onclick="openActivity('formas')">
+                <div class="planet-content">
+                    <div class="planet-icon">☄️</div>
+                    <h2 class="planet-title">Cometa de Formas</h2>
+                    <p class="planet-description">¡Reconoce círculos, cuadrados y más!</p>
+                    <div class="planet-progress">
+                        <span class="progress-stars">⭐ 5/15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nebulosa de Música -->
+            <div class="planet-card red" onclick="openActivity('musica')">
+                <div class="planet-content">
+                    <div class="planet-icon">🌟</div>
+                    <h2 class="planet-title">Nebulosa de Música</h2>
+                    <p class="planet-description">¡Canta y baila en el espacio!</p>
+                    <div class="planet-progress">
+                        <span class="progress-stars">⭐ 7/15</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Modales para cada actividad -->
+    
+    <!-- Modal Números -->
+    <div id="modal-numeros" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <span class="modal-icon">🌍</span>
+                    Planeta de Números
+                </h2>
+                <button class="close-btn" onclick="closeActivity('numeros')">×</button>
+            </div>
+            
+            <p class="modal-subtitle">¡Elige una misión para aprender números!</p>
+            
+            <div class="activities-grid">
+                <div class="activity-option">
+                    <div class="activity-icon">1️⃣</div>
+                    <h3 class="activity-title">Contar Estrellas</h3>
+                    <p class="activity-desc">Cuenta del 1 al 10</p>
+                    <button class="play-btn blue" onclick="startActivity('Contar Estrellas', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🔢</div>
+                    <h3 class="activity-title">Encuentra el Número</h3>
+                    <p class="activity-desc">Busca el número correcto</p>
+                    <button class="play-btn blue" onclick="startActivity('Encuentra el Número', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">➕</div>
+                    <h3 class="activity-title">Suma Espacial</h3>
+                    <p class="activity-desc">Suma fácil con cohetes</p>
+                    <button class="play-btn blue" onclick="startActivity('Suma Espacial', 4)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🎯</div>
+                    <h3 class="activity-title">Ordena los Planetas</h3>
+                    <p class="activity-desc">Del más pequeño al más grande</p>
+                    <button class="play-btn blue" onclick="startActivity('Ordena los Planetas', 4)">¡Jugar! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Palabras -->
+    <div id="modal-palabras" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <span class="modal-icon">🪐</span>
+                    Galaxia de Palabras
+                </h2>
+                <button class="close-btn" onclick="closeActivity('palabras')">×</button>
+            </div>
+            
+            <p class="modal-subtitle">¡Aprende palabras nuevas del espacio!</p>
+            
+            <div class="activities-grid">
+                <div class="activity-option">
+                    <div class="activity-icon">🔤</div>
+                    <h3 class="activity-title">Letras Espaciales</h3>
+                    <p class="activity-desc">Aprende el abecedario</p>
+                    <button class="play-btn purple" onclick="startActivity('Letras Espaciales', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">📖</div>
+                    <h3 class="activity-title">Lee con el Astronauta</h3>
+                    <p class="activity-desc">Palabras sencillas</p>
+                    <button class="play-btn purple" onclick="startActivity('Lee con el Astronauta', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🎤</div>
+                    <h3 class="activity-title">Rimas del Universo</h3>
+                    <p class="activity-desc">Palabras que riman</p>
+                    <button class="play-btn purple" onclick="startActivity('Rimas del Universo', 4)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🔍</div>
+                    <h3 class="activity-title">Busca la Palabra</h3>
+                    <p class="activity-desc">Encuentra palabras ocultas</p>
+                    <button class="play-btn purple" onclick="startActivity('Busca la Palabra', 4)">¡Jugar! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Objetos -->
+    <div id="modal-objetos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <span class="modal-icon">🌙</span>
+                    Luna de Objetos
+                </h2>
+                <button class="close-btn" onclick="closeActivity('objetos')">×</button>
+            </div>
+            
+            <p class="modal-subtitle">¡Identifica objetos del espacio!</p>
+            
+            <div class="activities-grid">
+                <div class="activity-option">
+                    <div class="activity-icon">🚀</div>
+                    <h3 class="activity-title">¿Qué es esto?</h3>
+                    <p class="activity-desc">Identifica cohetes, planetas...</p>
+                    <button class="play-btn pink" onclick="startActivity('¿Qué es esto?', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🧩</div>
+                    <h3 class="activity-title">Parejas Cósmicas</h3>
+                    <p class="activity-desc">Une objetos iguales</p>
+                    <button class="play-btn pink" onclick="startActivity('Parejas Cósmicas', 4)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">👀</div>
+                    <h3 class="activity-title">¿Dónde está?</h3>
+                    <p class="activity-desc">Encuentra el objeto escondido</p>
+                    <button class="play-btn pink" onclick="startActivity('¿Dónde está?', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🎨</div>
+                    <h3 class="activity-title">Colorea el Espacio</h3>
+                    <p class="activity-desc">Pinta objetos espaciales</p>
+                    <button class="play-btn pink" onclick="startActivity('Colorea el Espacio', 5)">¡Jugar! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Colores -->
+    <div id="modal-colores" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <span class="modal-icon">⭐</span>
+                    Estrella de Colores
+                </h2>
+                <button class="close-btn" onclick="closeActivity('colores')">×</button>
+            </div>
+            
+            <p class="modal-subtitle">¡Aprende todos los colores!</p>
+            
+            <div class="activities-grid">
+                <div class="activity-option">
+                    <div class="activity-icon">🎨</div>
+                    <h3 class="activity-title">Arcoíris Espacial</h3>
+                    <p class="activity-desc">Aprende colores básicos</p>
+                    <button class="play-btn yellow" onclick="startActivity('Arcoíris Espacial', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🌈</div>
+                    <h3 class="activity-title">¿Qué Color Es?</h3>
+                    <p class="activity-desc">Identifica colores</p>
+                    <button class="play-btn yellow" onclick="startActivity('¿Qué Color Es?', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🖍️</div>
+                    <h3 class="activity-title">Mezcla Mágica</h3>
+                    <p class="activity-desc">Combina colores</p>
+                    <button class="play-btn yellow" onclick="startActivity('Mezcla Mágica', 4)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">✨</div>
+                    <h3 class="activity-title">Estrellas de Colores</h3>
+                    <p class="activity-desc">Clasifica por color</p>
+                    <button class="play-btn yellow" onclick="startActivity('Estrellas de Colores', 4)">¡Jugar! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Formas -->
+    <div id="modal-formas" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <span class="modal-icon">☄️</span>
+                    Cometa de Formas
+                </h2>
+                <button class="close-btn" onclick="closeActivity('formas')">×</button>
+            </div>
+            
+            <p class="modal-subtitle">¡Reconoce formas geométricas!</p>
+            
+            <div class="activities-grid">
+                <div class="activity-option">
+                    <div class="activity-icon">⭕</div>
+                    <h3 class="activity-title">Círculos del Sistema Solar</h3>
+                    <p class="activity-desc">Encuentra círculos</p>
+                    <button class="play-btn green" onclick="startActivity('Círculos del Sistema Solar', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🔶</div>
+                    <h3 class="activity-title">Formas Espaciales</h3>
+                    <p class="activity-desc">Cuadrados, triángulos...</p>
+                    <button class="play-btn green" onclick="startActivity('Formas Espaciales', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🔺</div>
+                    <h3 class="activity-title">Construye un Cohete</h3>
+                    <p class="activity-desc">Usa diferentes formas</p>
+                    <button class="play-btn green" onclick="startActivity('Construye un Cohete', 5)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🎯</div>
+                    <h3 class="activity-title">Clasifica Formas</h3>
+                    <p class="activity-desc">Ordena por forma</p>
+                    <button class="play-btn green" onclick="startActivity('Clasifica Formas', 4)">¡Jugar! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Música -->
+    <div id="modal-musica" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <span class="modal-icon">🌟</span>
+                    Nebulosa de Música
+                </h2>
+                <button class="close-btn" onclick="closeActivity('musica')">×</button>
+            </div>
+            
+            <p class="modal-subtitle">¡Canta y baila en el espacio!</p>
+            
+            <div class="activities-grid">
+                <div class="activity-option">
+                    <div class="activity-icon">🎵</div>
+                    <h3 class="activity-title">Canciones Espaciales</h3>
+                    <p class="activity-desc">Canta con el astronauta</p>
+                    <button class="play-btn red" onclick="startActivity('Canciones Espaciales', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🎹</div>
+                    <h3 class="activity-title">Piano Galáctico</h3>
+                    <p class="activity-desc">Toca melodías simples</p>
+                    <button class="play-btn red" onclick="startActivity('Piano Galáctico', 4)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">🥁</div>
+                    <h3 class="activity-title">Ritmo Cósmico</h3>
+                    <p class="activity-desc">Sigue el ritmo</p>
+                    <button class="play-btn red" onclick="startActivity('Ritmo Cósmico', 3)">¡Jugar! 🚀</button>
+                </div>
+                
+                <div class="activity-option">
+                    <div class="activity-icon">💃</div>
+                    <h3 class="activity-title">Baile Espacial</h3>
+                    <p class="activity-desc">Muévete con la música</p>
+                    <button class="play-btn red" onclick="startActivity('Baile Espacial', 5)">¡Jugar! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="codigos de java/actividades.js"></script>
+     <!-- FOOTER -->
+    <footer>
+        <p>© 2025 NOVA | Sección para Padres de Familia</p>
+        <nav>
+            <a href="index.html">Inicio</a> 
+           
+          
+        </nav>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores</title>
+    <link rel="stylesheet" href="estilocss/profesores.css">
+    <link rel="stylesheet" href="codigos de java/profesores.js">
+</head>
+<body>
+    
+    <!-- Header -->
+    <div class="header-section">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-icon">
+                    <svg class="icon-book" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="main-title">Portal del Docente</h1>
+                    <p class="main-subtitle">Tu misión: Inspirar pequeños astronautas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación de pestañas -->
+    <div class="container tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="guia" onclick="showTab('guia')">
+                <svg class="tab-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                Guía de Uso
+            </button>
+            <button class="tab-btn" data-tab="cronograma" onclick="showTab('cronograma')">
+                <svg class="tab-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                Cronograma
+            </button>
+            <button class="tab-btn" data-tab="recursos" onclick="showTab('recursos')">
+                <svg class="tab-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                Recursos
+            </button>
+            <button class="tab-btn" data-tab="seguimiento" onclick="showTab('seguimiento')">
+                <svg class="tab-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                Seguimiento
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="container content-container">
+        <div class="content-wrapper">
+            
+            <!-- Guía de Uso -->
+            <div id="guia" class="tab-content active">
+                <h2 class="section-title">
+                    <svg class="title-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    ¿Cómo trabajar con Aventura Espacial?
+                </h2>
+                
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <div class="card-header">
+                            <div class="step-number green">1</div>
+                            <h3 class="card-title">Preparación (5 min)</h3>
+                        </div>
+                        <ul class="card-list">
+                            <li>• Revisar la actividad del día en el cronograma</li>
+                            <li>• Preparar materiales complementarios si los hay</li>
+                            <li>• Introducir el tema con una breve historia espacial</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-header">
+                            <div class="step-number blue">2</div>
+                            <h3 class="card-title">Desarrollo (15-20 min)</h3>
+                        </div>
+                        <ul class="card-list">
+                            <li>• Los niños exploran la actividad en tablets/computadoras</li>
+                            <li>• Circular y apoyar individualmente</li>
+                            <li>• Hacer preguntas guía: "¿Qué ves?", "¿Qué sigue?"</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-header">
+                            <div class="step-number purple">3</div>
+                            <h3 class="card-title">Cierre (5 min)</h3>
+                        </div>
+                        <ul class="card-list">
+                            <li>• Compartir logros: "¿Quién llegó a la luna?"</li>
+                            <li>• Relacionar con la vida real</li>
+                            <li>• Celebrar pequeños avances con estrellas</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-header">
+                            <div class="step-number yellow">💡</div>
+                            <h3 class="card-title">Tips de Oro</h3>
+                        </div>
+                        <ul class="card-list">
+                            <li>• Permite errores: son parte del aprendizaje</li>
+                            <li>• Usa lenguaje espacial: "programa tu cohete"</li>
+                            <li>• Trabaja en parejas para fomentar colaboración</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="objectives-box">
+                    <h3 class="objectives-title">
+                        <span class="star-icon">⭐</span>
+                        Objetivos de Aprendizaje
+                    </h3>
+                    <div class="objectives-grid">
+                        <div class="objective-item">
+                            <strong class="objective-label">Pensamiento Lógico:</strong>
+                            <p class="objective-desc">Secuencias, patrones y causa-efecto</p>
+                        </div>
+                        <div class="objective-item">
+                            <strong class="objective-label">Resolución de Problemas:</strong>
+                            <p class="objective-desc">Estrategias simples paso a paso</p>
+                        </div>
+                        <div class="objective-item">
+                            <strong class="objective-label">Creatividad:</strong>
+                            <p class="objective-desc">Exploración libre y experimentación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cronograma -->
+            <div id="cronograma" class="tab-content">
+                <div class="cronograma-header">
+                    <h2 class="section-title">
+                        <svg class="title-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Cronograma Mensual
+                    </h2>
+                    <span class="badge">12 sesiones | 4 semanas</span>
+                </div>
+
+                <!-- Semana 1 -->
+                <div class="week-card">
+                    <button class="week-header" onclick="toggleWeek('week1')">
+                        <div class="week-info">
+                            <div class="week-number">1</div>
+                            <div>
+                                <h3 class="week-title">Semana 1</h3>
+                                <p class="week-theme">Despegue: Introducción al Espacio</p>
+                            </div>
+                        </div>
+                        <div class="arrow" id="arrow-week1">▼</div>
+                    </button>
+                    
+                    <div id="week1" class="week-content">
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Lunes</span>
+                                    <span class="duration">⏱️ 20 min</span>
+                                </div>
+                                <h4 class="activity-name">Exploración de planetas</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Reconocimiento visual y colores</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Miércoles</span>
+                                    <span class="duration">⏱️ 15 min</span>
+                                </div>
+                                <h4 class="activity-name">Conteo de estrellas</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Números del 1 al 5</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Viernes</span>
+                                    <span class="duration">⏱️ 25 min</span>
+                                </div>
+                                <h4 class="activity-name">Mi cohete espacial</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Creatividad y formas básicas</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semana 2 -->
+                <div class="week-card">
+                    <button class="week-header" onclick="toggleWeek('week2')">
+                        <div class="week-info">
+                            <div class="week-number">2</div>
+                            <div>
+                                <h3 class="week-title">Semana 2</h3>
+                                <p class="week-theme">Órbita: Secuencias y Patrones</p>
+                            </div>
+                        </div>
+                        <div class="arrow" id="arrow-week2">▼</div>
+                    </button>
+                    
+                    <div id="week2" class="week-content">
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Lunes</span>
+                                    <span class="duration">⏱️ 20 min</span>
+                                </div>
+                                <h4 class="activity-name">Patrón de asteroides</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Reconocer secuencias simples</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Miércoles</span>
+                                    <span class="duration">⏱️ 15 min</span>
+                                </div>
+                                <h4 class="activity-name">Ruta del astronauta</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Seguir instrucciones ordenadas</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Viernes</span>
+                                    <span class="duration">⏱️ 25 min</span>
+                                </div>
+                                <h4 class="activity-name">Constelaciones conectadas</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Unir puntos en orden</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semana 3 -->
+                <div class="week-card">
+                    <button class="week-header" onclick="toggleWeek('week3')">
+                        <div class="week-info">
+                            <div class="week-number">3</div>
+                            <div>
+                                <h3 class="week-title">Semana 3</h3>
+                                <p class="week-theme">Galaxia: Lógica Espacial</p>
+                            </div>
+                        </div>
+                        <div class="arrow" id="arrow-week3">▼</div>
+                    </button>
+                    
+                    <div id="week3" class="week-content">
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Lunes</span>
+                                    <span class="duration">⏱️ 20 min</span>
+                                </div>
+                                <h4 class="activity-name">¿Qué planeta falta?</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Pensamiento lógico básico</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Miércoles</span>
+                                    <span class="duration">⏱️ 15 min</span>
+                                </div>
+                                <h4 class="activity-name">Robot espacial</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Comandos simples (adelante, atrás)</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Viernes</span>
+                                    <span class="duration">⏱️ 25 min</span>
+                                </div>
+                                <h4 class="activity-name">Misión lunar</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Resolver problemas simples</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semana 4 -->
+                <div class="week-card">
+                    <button class="week-header" onclick="toggleWeek('week4')">
+                        <div class="week-info">
+                            <div class="week-number">4</div>
+                            <div>
+                                <h3 class="week-title">Semana 4</h3>
+                                <p class="week-theme">Aterrizaje: Integración y Repaso</p>
+                            </div>
+                        </div>
+                        <div class="arrow" id="arrow-week4">▼</div>
+                    </button>
+                    
+                    <div id="week4" class="week-content">
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Lunes</span>
+                                    <span class="duration">⏱️ 30 min</span>
+                                </div>
+                                <h4 class="activity-name">Gran aventura espacial</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Aplicar todo lo aprendido</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Miércoles</span>
+                                    <span class="duration">⏱️ 20 min</span>
+                                </div>
+                                <h4 class="activity-name">Certificación astronauta</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Evaluación lúdica</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <div class="activity-meta">
+                                    <span class="day-badge">Viernes</span>
+                                    <span class="duration">⏱️ 25 min</span>
+                                </div>
+                                <h4 class="activity-name">Fiesta espacial</h4>
+                                <p class="activity-objective"><strong>Objetivo:</strong> Celebración y cierre</p>
+                            </div>
+                            <button class="play-button">▶️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recursos -->
+            <div id="recursos" class="tab-content">
+                <h2 class="section-title">
+                    <svg class="title-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    Materiales Descargables
+                </h2>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <span class="resource-icon">📘</span>
+                        <div class="resource-info">
+                            <h3 class="resource-title">Guía de Inicio Rápido</h3>
+                            <span class="resource-type">PDF</span>
+                        </div>
+                        <svg class="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                    </div>
+
+                    <div class="resource-card">
+                        <span class="resource-icon">📅</span>
+                        <div class="resource-info">
+                            <h3 class="resource-title">Planificaciones Semanales</h3>
+                            <span class="resource-type">Descargable</span>
+                        </div>
+                        <svg class="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                    </div>
+
+                    <div class="resource-card">
+                        <span class="resource-icon">🏆</span>
+                        <div class="resource-info">
+                            <h3 class="resource-title">Certificados Personalizables</h3>
+                            <span class="resource-type">Plantilla</span>
+                        </div>
+                        <svg class="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                    </div>
+
+                    <div class="resource-card">
+                        <span class="resource-icon">🎥</span>
+                        <div class="resource-info">
+                            <h3 class="resource-title">Videos Tutoriales</h3>
+                            <span class="resource-type">Video</span>
+                        </div>
+                        <svg class="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="download-kit">
+                    <h3 class="kit-title">Kit de Aula Completo</h3>
+                    <p class="kit-description">
+                        Descarga todo lo necesario para implementar el programa: planificaciones, evaluaciones, certificados y actividades complementarias offline.
+                    </p>
+                    <button class="kit-button">
+                        <svg class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Descargar Kit Completo (ZIP)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seguimiento -->
+            <div id="seguimiento" class="tab-content">
+                <h2 class="section-title">
+                    <svg class="title-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    Panel de Seguimiento
+                </h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card green">
+                        <div class="stat-number">23/25</div>
+                        <div class="stat-label">Estudiantes Activos</div>
+                    </div>
+                    <div class="stat-card blue">
+                        <div class="stat-number">78%</div>
+                        <div class="stat-label">Actividades Completadas</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Estrellas Ganadas</div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <h3 class="progress-section-title">Progreso por Estudiante</h3>
+                    <div class="student-progress">
+                        <div class="student-row">
+                            <div class="student-name">María G.</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 85%">
+                                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-row">
+                            <div class="student-name">Carlos M.</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 72%">
+                                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-row">
+                            <div class="student-name">Ana S.</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 95%">
+                                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-row">
+                            <div class="student-name">Pedro L.</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 68%">
+                                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-row">
+                            <div class="student-name">Lucía R.</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 88%">
+                                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendations-box">
+                    <h3 class="recommendations-title">💡 Recomendaciones Personalizadas</h3>
+                    <ul class="recommendations-list">
+                        <li>• <strong>Refuerzo sugerido:</strong> 3 estudiantes necesitan apoyo adicional en secuencias</li>
+                        <li>• <strong>Destacados:</strong> 5 estudiantes listos para retos avanzados</li>
+                        <li>• <strong>Próxima semana:</strong> Introducir actividades de lógica espacial</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="profesores.js"></script>
+     <!-- FOOTER -->
+    <footer>
+        <p>© 2025 NOVA | Sección para Padres de Familia</p>
+        <nav>
+            <a href="index.html">Inicio</a> 
+          
+          
+        </nav>
+    </footer>
+</body>
+</html>
