@@ -1,0 +1,548 @@
+/* Reset y configuración básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0e27;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Estrellas animadas de fondo */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 0.3; 
+    }
+    50% { 
+        opacity: 1; 
+    }
+}
+
+/* Contenido principal */
+.main-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.rocket {
+    display: inline-block;
+    font-size: 100px;
+    margin-bottom: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.05); 
+    }
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.8);
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: #c4b5fd;
+    margin-bottom: 40px;
+}
+
+/* Barra de progreso */
+.progress-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #1e1b4b;
+    border-radius: 50px;
+    padding: 15px;
+    border: 2px solid #a78bfa;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 15px;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.stars-count {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+.progress-bar-bg {
+    background: #312e81;
+    border-radius: 30px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #fbbf24, #ec4899, #a78bfa);
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Contenedor de planetas */
+.planets-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+/* Tarjetas de planetas */
+.planet-card {
+    padding: 40px;
+    border-radius: 30px;
+    border: 4px solid;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-20px); 
+    }
+}
+
+.planet-card:nth-child(2) { 
+    animation-delay: 0.5s; 
+}
+
+.planet-card:nth-child(3) { 
+    animation-delay: 1s; 
+}
+
+.planet-card:nth-child(4) { 
+    animation-delay: 1.5s; 
+}
+
+.planet-card:nth-child(5) { 
+    animation-delay: 2s; 
+}
+
+.planet-card:nth-child(6) { 
+    animation-delay: 2.5s; 
+}
+
+.planet-card:hover {
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 20px 50px rgba(167, 139, 250, 0.4);
+}
+
+/* Colores de planetas */
+.planet-card.blue {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    border-color: #60a5fa;
+}
+
+.planet-card.purple {
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
+    border-color: #c084fc;
+}
+
+.planet-card.pink {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+    border-color: #f9a8d4;
+}
+
+.planet-card.yellow {
+    background: linear-gradient(135deg, #eab308, #f97316);
+    border-color: #fcd34d;
+}
+
+.planet-card.green {
+    background: linear-gradient(135deg, #16a34a, #059669);
+    border-color: #4ade80;
+}
+
+.planet-card.red {
+    background: linear-gradient(135deg, #dc2626, #be123c);
+    border-color: #f87171;
+}
+
+.planet-content {
+    text-align: center;
+}
+
+.planet-icon {
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+
+.planet-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.planet-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.planet-progress {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.progress-stars {
+    color: #fcd34d;
+    font-weight: bold;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1e1b4b 0%, #581c87 100%);
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 1000px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+    border: 3px solid #a78bfa;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.modal-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-icon {
+    font-size: 3.5rem;
+}
+
+.close-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.close-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+.modal-subtitle {
+    font-size: 1.3rem;
+    color: #c4b5fd;
+    margin-bottom: 30px;
+}
+
+/* Grid de actividades */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.activity-option {
+    background: rgba(99, 102, 241, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.activity-option:hover {
+    transform: scale(1.05);
+    background: rgba(167, 139, 250, 0.3);
+}
+
+.activity-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.activity-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.activity-desc {
+    color: #c4b5fd;
+    margin-bottom: 20px;
+}
+
+/* Botones de jugar */
+.play-btn {
+    width: 100%;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+}
+
+.play-btn.blue {
+    background: #3b82f6;
+}
+
+.play-btn.blue:hover {
+    background: #2563eb;
+}
+
+.play-btn.purple {
+    background: #a855f7;
+}
+
+.play-btn.purple:hover {
+    background: #9333ea;
+}
+
+.play-btn.pink {
+    background: #ec4899;
+}
+
+.play-btn.pink:hover {
+    background: #db2777;
+}
+
+.play-btn.yellow {
+    background: #eab308;
+}
+
+.play-btn.yellow:hover {
+    background: #ca8a04;
+}
+
+.play-btn.green {
+    background: #10b981;
+}
+
+.play-btn.green:hover {
+    background: #059669;
+}
+
+.play-btn.red {
+    background: #ef4444;
+}
+
+.play-btn.red:hover {
+    background: #dc2626;
+}
+
+/* Colores de borde para actividades según tema */
+#modal-numeros .activity-option { 
+    border-color: #60a5fa; 
+}
+
+#modal-palabras .activity-option { 
+    border-color: #c084fc; 
+}
+
+#modal-objetos .activity-option { 
+    border-color: #f9a8d4; 
+}
+
+#modal-colores .activity-option { 
+    border-color: #fcd34d; 
+}
+
+#modal-formas .activity-option { 
+    border-color: #4ade80; 
+}
+
+#modal-musica .activity-option { 
+    border-color: #f87171; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .rocket {
+        font-size: 70px;
+    }
+    
+    .planets-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .modal-title {
+        font-size: 1.8rem;
+    }
+    
+    .modal-icon {
+        font-size: 2.5rem;
+    }
+    
+    .modal-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .rocket {
+        font-size: 60px;
+    }
+    
+    .planet-title {
+        font-size: 1.5rem;
+    }
+    
+    .planet-description {
+        font-size: 1rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px dashed var(--color-principal);
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+footer a {
+    color: var(--color-texto-claro);
+    margin: 0 10px;
+}

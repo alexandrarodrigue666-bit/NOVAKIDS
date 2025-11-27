@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 1s ease;
+}
+
+.header h1 {
+    font-size: 3em;
+    color: #ffd700;
+    text-shadow: 0 0 20px #ffd700, 0 0 30px #ffa500;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.3em;
+    color: #87ceeb;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 0.3; 
+    }
+    50% { 
+        opacity: 1; 
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    border-color: #ffd700;
+}
+
+.section-title {
+    color: #ffd700;
+    font-size: 1.9em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 10px;
+}
+
+.card-content {
+    line-height: 1.9;
+    font-size: 1.15em;
+}
+
+.card-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.card-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.card-content li {
+    margin-bottom: 18px;
+    position: relative;
+    padding-left: 30px;
+    text-align: justify;
+}
+
+.card-content li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    font-size: 1.4em;
+    color: #87ceeb;
+}
+
+.highlight-box {
+    background: rgba(135, 206, 235, 0.15);
+    border-left: 4px solid #87ceeb;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.info-item {
+    background: rgba(135, 206, 235, 0.1);
+    border: 2px solid rgba(135, 206, 235, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(135, 206, 235, 0.2);
+    border-color: #87ceeb;
+    transform: translateY(-3px);
+}
+
+.info-item h3 {
+    color: #ffd700;
+    margin-bottom: 12px;
+    font-size: 1.3em;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2.5em;
+    animation: float 3s ease-in-out infinite;
+    z-index: 3;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    color: #ffd700;
+    background: rgba(26, 26, 46, 0.8);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffd700;
+}
+
+.scroll-top:hover {
+    transform: scale(1.15);
+    background: rgba(255, 215, 0, 0.2);
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-15px); 
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .section-title {
+        font-size: 1.5em;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-card {
+        padding: 25px;
+    }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+
+/* 1. FOOTER PRINCIPAL (#pie-pagina)
+   Aplica el fondo oscuro, la forma y el color del texto por defecto */
+#pie-pagina {
+    /* Fondo y Color */
+    background: linear-gradient(135deg, #2d3748, #1a202c); /* Degradado oscuro */
+    color: white; /* Asegura que el texto sea visible */
+    padding: 40px 20px;
+    margin-top: 80px; /* Separación del contenido principal */
+    
+    /* Forma y Profundidad */
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5); 
+}
+
+/* 2. CONTENEDOR INTERNO (.contenedor-footer)
+   Centra el contenido y crea el diseño de Grid */
+.contenedor-footer {
+    max-width: 1200px;
+    margin: 0 auto; /* Centrado horizontal */
+    
+    display: grid;
+    /* Grid: 4 columnas en pantallas grandes, se ajustan automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 30px; 
+    padding-bottom: 20px; /* Espacio antes de la línea de copyright */
+}
+
+/* 3. ESTILOS DE LAS COLUMNAS INDIVIDUALES (.columna-footer) */
+.columna-footer h4 {
+    color: #667eea; /* Títulos de columna en azul claro/neón */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.columna-footer p {
+    color: #cbd5e0; /* Párrafos en gris claro */
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+/* 4. PERSONALIZACIÓN DE LISTAS Y ENLACES */
+.columna-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.columna-footer li {
+    margin: 8px 0;
+}
+
+.columna-footer a {
+    color: #cbd5e0; /* Enlaces en gris claro */
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+.columna-footer a:hover {
+    color: #40c9ff; /* Efecto hover azul brillante */
+    padding-left: 5px;
+}
+
+/* 5. SECCIÓN DE DERECHOS DE AUTOR (.copyright) */
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568; /* Línea divisoria suave */
+    margin-top: 20px;
+    color: #a0aec0;
+}
+
+.copyright p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}

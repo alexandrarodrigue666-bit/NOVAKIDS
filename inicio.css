@@ -1,0 +1,1311 @@
+
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Ajustes globales para el cuerpo */
+
+#accessibilityBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000; /* Alto z-index para que siempre esté visible */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#accessibilityBtn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#accessibilityBtn.is-open {
+    background-color: #e74c3c; 
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#accessibilityPanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: none; 
+    justify-content: flex-end; 
+    z-index: 9999; /* Alto z-index para el overlay */
+}
+
+.accessibility-menu-content {
+    width: 320px; 
+    height: 100%;
+    background-color: white; 
+    padding: 20px 0;
+    overflow-y: auto; 
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); 
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Estilos de estructura (Títulos, Listas, Toggles, Sliders...) */
+.section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 20px 10px 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ddd;
+    color: #2c3e50;
+}
+.options-list {
+    list-style: none;
+    padding: 0 20px;
+}
+.option-item {
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+}
+.option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggle-switch {
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.toggle-knob {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.toggle-switch.active {
+    background-color: #3427ae;
+}
+.toggle-switch.active .toggle-knob {
+    transform: translateX(20px);
+}
+.action-buttons {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.btn {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* ==================================== */
+/* 2. EFECTO FOCO PARA MODO TDAH        */
+/* ==================================== */
+
+/* 1. Prepara el cuerpo y crea el OVERLAY oscuro */
+.adhd-friendly {
+    position: relative; 
+}
+
+.adhd-friendly::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo: negro semitransparente para oscurecer */
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 998; 
+    pointer-events: none; /* Crucial para permitir interacciones */
+}
+
+/* 2. Define qué elementos del contenido principal se pueden enfocar */
+.adhd-friendly p:hover, 
+.adhd-friendly h1:hover, 
+.adhd-friendly h2:hover, 
+.adhd-friendly h3:hover,
+.adhd-friendly article:hover, 
+.adhd-friendly section:hover,
+.adhd-friendly main *:hover { 
+    
+    /* El box-shadow transparente crea el 'agujero' en el overlay oscuro */
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0) !important; 
+    
+    /* Asegura que el contenido enfocado flote sobre el overlay */
+    position: relative; 
+    z-index: 999; 
+    
+    /* Resaltado visual */
+    outline: 3px solid rgb(242, 242, 227) !important; 
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+/* ==================================== */
+/* 3. OTRAS CLASES DE ACCESIBILIDAD 
+/* ==================================== */
+.highlight-links a {
+    background-color: rgb(234, 234, 222) !important;
+    color: rgb(0, 0, 0) !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+}
+
+
+
+/* Modo para personas con discapacidad visual: mejora contrastes e imágenes */
+.visual-impaired img,
+.visual-impaired [role="img"] {
+    /* Un ligero ajuste para que las imágenes destaquen */
+    outline: 2px solid #f39c12 !important; 
+}
+
+/* Modo de discapacidad cognitiva: ayuda a concentrarse */
+.cognitive-disability * {
+    /* Asegura un espaciado consistente y elimina bordes complejos */
+    line-height: 1.8 !important; 
+    letter-spacing: 0.12px !important;
+}
+
+/* --- Ajustes Visuales --- */
+
+/* Alto contraste */
+.high-contrast {
+    /* El JavaScript ya gestiona el filtro de contraste, pero podemos añadir un estilo de fuente */
+    color: black !important;
+    background-color: white !important;
+}
+.high-contrast h1, .high-contrast h2, .high-contrast h3 {
+    color: black !important;
+}
+.high-contrast a {
+    color: #0000ff !important; /* Azul puro para enlaces */
+}
+
+/* Escala de grises (El JS aplica el filtro: grayscale(100%)) */
+/* No se necesita CSS adicional a menos que se quiera anular en elementos específicos */
+
+/* Inversión de colores (El JS aplica el filtro: invert(1) hue-rotate(180deg)) */
+/* Esto invierte todos los colores, incluyendo el texto y el fondo */
+
+/* Resaltar enlaces */
+.highlight-links a {
+    /* Resalta los enlaces con un fondo amarillo para hacerlos muy visibles */
+    background-color: yellow !important;
+    color: black !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+    padding: 1px 3px !important;
+}
+/* ============================================
+   ESTILOS TIPOGRÁFICOS Y COLORES
+   ============================================ */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f8f8f8;
+    line-height: 1.7;
+    background-color: #030303;
+}
+
+h1 {
+    font-size: 2.8em; /* ~45px - más moderado */
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2em; /* ~32px */
+    color: #e8e8e8;
+    margin-bottom: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+h3 {
+    font-size: 1.5em; /* ~24px */
+    color: #d8d8d8;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+p {
+    color: #cccccc;
+    line-height: 1.8;
+    font-size: 1.1em;
+    margin-bottom: 1.2em;
+}
+
+em {
+    font-style: italic;
+    color: #aaaaaa;
+}
+
+strong {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Opcional: mejorar legibilidad para textos largos */
+.article-content {
+    max-width: 65ch; /* Óptimo para lectura */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   HEADER - DISEÑO ESTRUCTURAL
+   ============================================ */
+header {
+    position: relative;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    filter: brightness(60%);
+}
+
+header h1, 
+header p, 
+header img {
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+header p {
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+header img {
+    margin-top: 20px;
+    width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   NAV - MENÚ DE NAVEGACIÓN CON ANIMACIÓN*/
+
+nav {
+    background: #0a0a2e;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav > a,
+nav .menu-item {
+    position: relative;
+    display: inline-block;
+}
+
+nav > a,
+nav .menu-item > a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: all 0.3s;
+}
+
+nav > a:hover,
+nav .menu-item > a:hover {
+    background: #d3c0ff;
+}
+
+
+
+.menu-item:hover .submenu {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+
+/* Estilos del submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #34495e;
+    min-width: 250px;
+    box-shadow: 0 4px 8px rgba(20, 20, 20, 0.744);
+    border-top: 3px solid #3b2c53;
+    z-index: 1000;
+}
+
+.menu-item:hover .submenu {
+    display: none;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.submenu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: all 0.3s;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.submenu a:hover {
+    background: #667eea;
+    padding-left: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    nav > a,
+    nav .menu-item {
+        display: block;
+        width: 100%;
+    }
+
+    nav > a,
+    nav .menu-item > a {
+        display: block;
+        padding: 10px;
+    }
+
+    .submenu {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .menu-item:hover .submenu {
+        display: block;
+    }
+
+    .submenu a {
+        padding-left: 40px;
+        background: #2c3e50;
+    }
+
+    .submenu a:hover {
+        background: #667eea;
+        padding-left: 50px;
+    }
+}
+/* SECCIÓN DE BIENVENIDA*/
+  main {
+    max-width: none; /* Elimina el límite de ancho */
+    margin: 0;
+    padding: 0;
+}
+
+/* Las demás secciones mantienen su ancho contenido */
+
+.informacion-horarios,
+.formulario-contacto {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+        .seccion-bienvenida {
+          width: 100%;
+    min-width: 100%;
+    .texto-justificado {
+    text-align: justify;
+
+}
+
+
+    background-image: url('imagenes/fondobienvenida.jpg.jpg');
+    background-size: cover; /* Cubre toda el área */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repetición */
+    position: relative;
+}
+        .contenedor-bienvenida {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.contenedor-bienvenida p {
+    text-align: justify;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #f3f1f1;
+}
+
+
+        .btn-mostrar {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-mostrar:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+/* ============================================
+   SECCIONES CON CARRUSEL - NOTICIAS
+   ============================================ */
+.seccion-carrusel {
+    background: #7b61b8;
+    background-image:#8f6eaf;
+    margin: 40px 0;
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: white; /* Texto blanco */
+    font-weight: 400; 
+    line-height: 1.6; 
+
+    .slide-imagen {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slide-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.slide-content:hover .slide-imagen img {
+    transform: scale(1.05);
+}
+}
+
+/* ESTILOS CON ID PARA SECCIONES ESPECÍFICAS */
+#noticias {
+    background: linear-gradient(135deg, #8738b8 100%);
+
+}
+
+#comunidad {
+    background: linear-gradient(135deg, #8f3e3e 100%);
+    margin: 40px 0;
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: white; /* Texto blanco */
+    font-weight: 400; 
+    line-height: 1.6; 
+
+    .slide-imagen {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slide-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.slide-content:hover .slide-imagen img {
+    transform: scale(1.05);
+}
+}
+
+#comunidad h2,
+#comunidad .slide-descripcion h3 {
+    color: white;
+}
+
+#comunidad .slide-descripcion p {
+    color: #f0f0f0;
+}
+
+#actividades {
+    background: linear-gradient(135deg, #0a0a2e 100%);
+    margin: 40px 0;
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: white; /* Texto blanco */
+    text-align: center;
+    font-weight: 400; 
+    line-height: 1.6; 
+
+}
+   
+
+
+.contenedor-video-actividades {
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.video-centrado {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.contenedor-botones-actividades {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-actividad,
+.btn-juego {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-actividad:hover,
+.btn-juego:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+    
+
+
+#actividades h2,
+#actividades .slide-descripcion h3 {
+    color: white;
+}
+
+#actividades .slide-descripcion p {
+    color: #f0f0f0;
+}
+
+.seccion-carrusel h2 {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 40px;
+}
+
+/* ============================================
+   CARRUSEL - CLASES
+   ============================================ */
+.carrusel-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+/* ============================================
+   CARRUSEL - BOTONES DE DESPLAZAMINETO
+   ============================================ */
+.carrusel-btn {
+    background: #b5a2cd;
+    color: white;
+    border: none;
+    font-size: 2.5em;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PSEUDOCLASE :hover PARA BOTONES */
+.carrusel-btn:hover {
+    background: #9447b4;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.5);
+}
+
+.carrusel-wrapper {
+    overflow: hidden;
+    flex: 1;
+}
+
+.carrusel-slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide-content {
+    min-width: 100%;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+ /* ============================================
+   SECCIÓN RECURSOS - DISEÑO DE SLIDES
+   ============================================ */
+
+  
+
+.seccion-recursos .slide-imagen {
+    width: 50%; /* La imagen ocupa la mitad */
+    height: auto; /* Permite que la altura se ajuste */
+    max-height: 400px; /* Limita la altura de la imagen si es necesario */
+    border-radius: 15px 0 0 15px; /* Bordes redondeados solo a la izquierda */
+}
+
+.seccion-recursos .slide-imagen img {
+    /* La imagen debe cubrir su contenedor */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px 0 0 15px;
+}
+
+.seccion-recursos .slide-descripcion {
+    width: 50%; /* La descripción ocupa la otra mitad */
+    padding: 20px 30px; /* Relleno interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar el texto verticalmente */
+    border-radius: 0 15px 15px 0; /* Bordes redondeados solo a la derecha */
+}
+
+/* NOTICIAS (Usa las imágenes de fondo que ya definiste en el HTML) */
+#carrusel-noticias .slide-imagen {
+    .slide-imagen {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+}
+
+/* ============================================
+   SECCIÓN RECURSOS - ACTIVIDADES Y JUEGOS
+   ============================================ */
+#actividades {
+    background: linear-gradient(135deg, #0a0a2e 100%);
+    margin: 40px 0;
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: white; /* Texto blanco */
+    
+    /* 🎯 CAMBIO DE FUENTE AQUÍ 🎯 */
+    font-family: 'Press Start 2P', monospace;
+    
+    font-weight: 400; /* Puedes necesitar ajustar el peso si la fuente es muy gruesa */
+    line-height: 1.6;
+    text-align: center;
+
+
+.slide-video  video {
+    top: 10%;
+    left: 10%;
+    width: 10%;
+    height: 10%;
+  
+    z-index: 0;
+    filter: brightness(10%);
+
+}
+
+.slide-content:hover .slide-imagen  {
+    transform: scale(1.05);
+}
+    @font-face {
+    font-family: 'RetroPixel'; /* Nombra la fuente como quieras */
+    src: url('fonts/pixel-font.woff2') format('woff2'),
+         url('fonts/pixel-font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+}
+
+
+
+
+/* ============================================
+   SECCIÓN RECURSOS - PADRES Y PROFESORES
+   ============================================ */
+
+.seccion-recursos {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0;
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.recursos-principales {
+    flex: 1;
+}
+
+.recursos-principales h2 {
+    text-align: center;
+}
+
+/* ============================================
+   ESTILOS ESPECÍFICOS PARA SECCIONES DE RECURSOS (COLORES)
+   ============================================ */
+
+/* PROFESORES: Usamos un tono de azul/morado */
+#profesores {
+    background: #3b2c53; /* Tono oscuro para que el texto blanco destaque */
+    color: white; /* Asegura que todo el texto sea blanco */
+     width: 100%;
+    min-width: 100%;
+}
+
+/* PADRES: Usamos un tono más cálido o claro */
+#padres {
+    background: #aa4c7e; 
+    color: #333; /* Asegura que el texto sea oscuro sobre el fondo claro */
+}
+
+/* Ajustes de Color de Texto */
+
+/* Asegurar que las cabeceras y párrafos de Profesores sean blancos */
+#profesores h2, #profesores h3, #profesores p, #profesores strong {
+    color: white;
+}
+
+/* Asegurar que las cabeceras y párrafos de Padres sean oscuros */
+#padres h2, #padres h3, #padres p, #padres strong {
+    color: #ffffff; /
+}
+/* SIDEBAR - DISEÑO ESTRUCTURAL */
+.recursos-sidebar {
+    width: 280px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recursos-sidebar h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+/*colores del menu lateral de materiales*/
+.recurso-item {
+    background: linear-gradient(135deg, #97a9e8, #764ba2);
+    height: 80px;
+    margin: 15px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(227, 40, 40);
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* PSEUDOCLASE :hover PARA RECURSOS */
+.recurso-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+/* ============================================
+   TABLA DE HORARIOS - PERSONALIZACIÓN 
+   ============================================ */
+
+/* 1. ESTABLECER EL FONDO AZUL OSCURO Y EL TEXTO BLANCO */
+.informacion-horarios {
+    /* Fondo azul oscuro: #1f2937 (ajustado en la respuesta anterior) */
+    background: #1f2937; 
+    
+    /* 🎯 NUEVOS ESTILOS PARA CENTRAR EL CUADRO 🎯 */
+    max-width: 900px; /* Define un ancho máximo para el cuadro */
+    margin: 40px auto; /* Centra horizontalmente (auto) y mantiene margen vertical (40px) */
+    
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    color: white; /* Texto del cuerpo en blanco */
+}
+
+/* El título ya está centrado con la siguiente regla: */
+.informacion-horarios h2 {
+    color: white; 
+    text-align: center; /* Esto centra el texto "Horarios de Atención" DENTRO del cuadro */
+    font-size: 2.5em; 
+    margin-bottom: 30px; 
+}
+
+/* 3. ADAPTAR EL ESTILO DE LA TABLA AL FONDO OSCURO */
+.tabla-horarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Encabezados (th) de la tabla */
+.tabla-horarios th {
+    /* Mantenemos el degradado, pero si quieres un estilo más limpio, usa un color sólido */
+    background: linear-gradient(135deg, #4f46e5, #6366f1); 
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* Celdas de la tabla (td) */
+.tabla-horarios td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #4b5563; /* Líneas de división más claras para fondo oscuro */
+    color: #f3f4f6; /* Color de texto para las celdas */
+}
+
+/* Filas alternadas (Para mejor contraste en fondo oscuro) */
+.tabla-horarios tbody tr:nth-child(even) {
+    background: #374151;
+}
+
+/* Efecto hover */
+.tabla-horarios tbody tr:hover {
+    background: #4a5568; 
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+
+/* ============================================
+   SECCIÓN DE CONTACTO - BASE
+   ============================================ */
+
+.formulario-contacto {
+    background: #000000;
+    padding: 60px 40px;
+    margin: 40px 0;
+    border-radius: 15px;
+    /* Sombra oscura para contraste en el fondo */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+
+.formulario-contacto h2 {
+    /* El título "Contáctanos" */
+    color: white; 
+    text-align: center; /* Manteniendo la alineación de la imagen original */
+    margin-bottom: 10px;
+    font-size: 2.5em; 
+}
+
+.formulario-contacto > p {
+    /* Descripción: "¿Tienes preguntas o sugerencias...?" */
+    color: #a0a0a0; 
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+
+/* ============================================
+   CUADRO DEL FORMULARIO - EFECTO NEÓN
+   ============================================ */
+
+.form-contacto {
+    max-width: 600px;
+    
+    /* 🎯 CENTRADO DEL CUADRO 🎯 */
+    margin: 0 auto; 
+    
+    /* 🎯 BORDE MÁGICO CON DEGRADADO 🎯 */
+    background: linear-gradient(#212121, #212121) padding-box,
+                linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+    border: 2px solid transparent; 
+    
+    padding: 40px;
+    border-radius: 16px; 
+    /* Brillo sutil de neón en la sombra */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 15px #e81cff20; 
+}
+
+/* Estilo para los Labels */
+.campo-formulario label {
+    display: block;
+    margin-bottom: 8px;
+    color: #a0a0a0; /* Labels en color gris claro */
+    font-weight: 600;
+    font-size: 1em;
+}
+
+/* ============================================
+   INPUTS, SELECT Y TEXTAREA - ESTILO OSCURO
+   ============================================ */
+.campo-formulario input[type="text"],
+.campo-formulario input[type="email"],
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+    padding: 12px;
+    
+    /* Fondo transparente y color de texto blanco */
+    background-color: transparent; 
+    color: #fff; 
+    
+    border: 1px solid #414141; /* Borde oscuro y delgado */
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+}
+
+/* PSEUDOCLASE :focus (Efecto Neón al enfocar) */
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    outline: none;
+    border-color: #e81cff; /* Borde de enfoque de color neón */
+    box-shadow: 0 0 0 3px rgba(232, 28, 255, 0.15); /* Sombra suave neón */
+}
+
+/* Asegurar que el checkbox mantenga su margen */
+.campo-formulario input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+    /* Remover estilos de input general que podrían afectarlo */
+    width: auto; 
+    border: none;
+    background: none;
+}
+
+
+/* ============================================
+   BOTONES DEL FORMULARIO - 
+   ============================================ */
+
+/* Contenedor de botones para centrar o alinear */
+.botones-formulario {
+    margin-top: 20px;
+    /* Centrar los botones si quieres que estén juntos */
+    /* text-align: center; */ 
+}
+
+/* Botón 'Enviar Mensaje' */
+.campo-formulario button {
+    /* Fondo azul-púrpura neón */
+    background: linear-gradient(135deg, #40c9ff, #e81cff); 
+    color: black; /* Texto oscuro para alto contraste */
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    box-shadow: none; /* Resetear sombra para que el hover funcione bien */
+}
+
+.campo-formulario button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(64, 201, 255, 0.4); 
+}
+
+/* Botón 'Limpiar Formulario' (Reset) */
+.campo-formulario button[type="reset"] {
+    background: #4a5568; /* Gris oscuro para el reset */
+    color: white;
+    box-shadow: none; /* Resetear sombra */
+}
+
+.campo-formulario button[type="reset"]:hover {
+    background: #6c757d;
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+    transform: translateY(-2px);
+}
+
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+
+/* 1. FOOTER PRINCIPAL (#pie-pagina)
+   Aplica el fondo oscuro, la forma y el color del texto por defecto */
+#pie-pagina {
+    /* Fondo y Color */
+    background: linear-gradient(135deg, #2d3748, #1a202c); /* Degradado oscuro */
+    color: white; /* Asegura que el texto sea visible */
+    padding: 40px 20px;
+    margin-top: 80px; /* Separación del contenido principal */
+    
+    /* Forma y Profundidad */
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5); 
+}
+
+/* 2. CONTENEDOR INTERNO (.contenedor-footer)
+   Centra el contenido y crea el diseño de Grid */
+.contenedor-footer {
+    max-width: 1200px;
+    margin: 0 auto; /* Centrado horizontal */
+    
+    display: grid;
+    /* Grid: 4 columnas en pantallas grandes, se ajustan automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 30px; 
+    padding-bottom: 20px; /* Espacio antes de la línea de copyright */
+}
+
+/* 3. ESTILOS DE LAS COLUMNAS INDIVIDUALES (.columna-footer) */
+.columna-footer h4 {
+    color: #667eea; /* Títulos de columna en azul claro/neón */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.columna-footer p {
+    color: #cbd5e0; /* Párrafos en gris claro */
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+/* 4. PERSONALIZACIÓN DE LISTAS Y ENLACES */
+.columna-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.columna-footer li {
+    margin: 8px 0;
+}
+
+.columna-footer a {
+    color: #cbd5e0; /* Enlaces en gris claro */
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+.columna-footer a:hover {
+    color: #40c9ff; /* Efecto hover azul brillante */
+    padding-left: 5px;
+}
+
+/* 5. SECCIÓN DE DERECHOS DE AUTOR (.copyright) */
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568; /* Línea divisoria suave */
+    margin-top: 20px;
+    color: #a0aec0;
+}
+
+.copyright p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* ============================================
+   RESPONSIVE - MEDIA QUERIES
+   ============================================ */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 40px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    header img {
+        width: 150px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    nav a::before,
+    nav a::after {
+        display: none;
+    }
+
+    .slide-content {
+        flex-direction: column;
+    }
+
+    .slide-imagen {
+        width: 100%;
+        height: 200px;
+    }
+
+    .seccion-recursos {
+        flex-direction: column;
+    }
+
+    .recursos-sidebar {
+        width: 100%;
+    }
+
+    .carrusel-btn {
+        font-size: 2em;
+        width: 50px;
+        height: 50px;
+    }
+
+    .seccion-bienvenida {
+        padding: 50px 20px;
+    }
+
+    .contenedor-bienvenida h2 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    .btn-mostrar {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+
+    .tabla-horarios th,
+    .tabla-horarios td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .formulario-contacto {
+        padding: 40px 20px;
+    }
+
+    .form-contacto {
+        padding: 25px;
+    }
+}
+
