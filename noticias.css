@@ -299,3 +299,73 @@ footer p {
         gap: 10px;
     }
 }
+
+/* Tablets y dispositivos medianos (768px y menos) */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  .header {
+    flex-direction: column;
+  }
+  
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Móviles pequeños (480px y menos) */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Móviles muy pequeños (320px y menos) */
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 13px;
+  }
+  
+  .container {
+    padding: 8px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+}
